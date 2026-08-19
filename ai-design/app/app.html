@@ -1,0 +1,129 @@
+<app-nav />
+
+<main class="flex-grow pb-24 pt-8 md:pb-8">
+  <div class="mx-auto max-w-screen-xl px-6 sm:px-8">
+    <div class="mb-8 flex items-end justify-between">
+      <div>
+        <h1 class="text-4xl font-extrabold tracking-tight text-white">
+          Discover
+        </h1>
+        <p class="mt-2 text-light-gold">Find your next connection.</p>
+      </div>
+      <button
+        class="hidden items-center gap-2 rounded-full border border-muted-gold px-4 py-2 font-semibold text-muted-gold transition-colors hover:bg-navy-border md:flex"
+      >
+        <span class="material-symbols-outlined text-[18px]">tune</span>
+        Filters
+      </button>
+    </div>
+
+    @if (Members().length === 0) {
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        @for (item of [1, 2, 3, 4, 5, 6]; track item) {
+          <div
+            class="overflow-hidden rounded-2xl border border-navy-border bg-navy-card"
+          >
+            <div class="skeleton aspect-[3/4] rounded-none"></div>
+            <div class="p-6">
+              <div class="skeleton h-4 w-2/3"></div>
+              <div class="skeleton mt-4 h-3 w-full"></div>
+              <div class="skeleton mt-2 h-3 w-3/4"></div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        @for (member of Members(); track member.id; let i = $index) {
+          <div
+            class="group relative overflow-hidden rounded-2xl border border-navy-border bg-navy-card transition-colors duration-200"
+          >
+            <div class="relative aspect-[3/4] w-full overflow-hidden">
+              <img
+                [src]="MemberPhotos[i % MemberPhotos.length]"
+                alt="Profile"
+                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+              ></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h2 class="text-xl font-semibold">{{ member.username }}</h2>
+                <div class="mt-1 flex items-center gap-1 opacity-90">
+                  <span class="material-symbols-outlined text-[14px]"
+                    >location_on</span
+                  >
+                  <span class="text-xs text-light-gold"
+                    >{{ Distances[i % Distances.length] }}</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="mb-6 line-clamp-2 text-white">
+                {{ member.email }}
+              </p>
+              <div class="mb-6 flex flex-wrap gap-2">
+                @for (tag of Tags[i % Tags.length]; track tag) {
+                  <span
+                    class="rounded-full border border-muted-gold bg-navy-border px-3 py-1 text-xs text-light-gold"
+                  >
+                    {{ tag }}
+                  </span>
+                }
+              </div>
+              <div class="flex gap-4">
+                <button
+                  class="flex flex-grow items-center justify-center gap-2 rounded-full border-2 border-light-gold px-4 py-3 text-light-gold transition-colors hover:bg-navy-border"
+                >
+                  <span class="material-symbols-outlined">chat</span>
+                  <span class="text-sm font-semibold">Message</span>
+                </button>
+                <button
+                  class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-muted-gold text-navy-card transition-opacity hover:opacity-90"
+                  aria-label="Like"
+                >
+                  <span
+                    class="material-symbols-outlined"
+                    style="font-variation-settings: 'FILL' 1"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</main>
+
+<nav
+  class="fixed inset-x-0 bottom-0 z-50 flex h-16 items-center justify-around border-t border-navy-border bg-midnight-bg px-4 md:hidden"
+>
+  <a
+    href=""
+    class="flex w-20 flex-col items-center justify-center rounded-lg p-2 text-muted-gold duration-100 active:scale-90 hover:bg-navy-border"
+  >
+    <span
+      class="material-symbols-outlined mb-1"
+      style="font-variation-settings: 'FILL' 1"
+      >search</span
+    >
+    Discover
+  </a>
+  <a
+    href=""
+    class="flex w-20 flex-col items-center justify-center rounded-lg p-2 text-light-gold duration-100 active:scale-90 hover:bg-navy-border"
+  >
+    <span class="material-symbols-outlined mb-1">chat</span>
+    Messages
+  </a>
+  <a
+    href=""
+    class="flex w-20 flex-col items-center justify-center rounded-lg p-2 text-light-gold duration-100 active:scale-90 hover:bg-navy-border"
+  >
+    <span class="material-symbols-outlined mb-1">favorite</span>
+    Likes
+  </a>
+</nav>

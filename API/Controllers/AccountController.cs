@@ -19,7 +19,7 @@ namespace API.Controllers
 
         // register function
 
-        [HttpPost("register")]
+        [HttpPost("register")] //https://localhost:7141/api/Account/register
         public async Task<ActionResult<UserDto>> register(RegisterDto registerDto)
         {
             if (await EmailExist(registerDto.Email)) return BadRequest("Email already Exist");
