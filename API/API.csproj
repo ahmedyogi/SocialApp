@@ -12,8 +12,10 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Errors\" />
     <Folder Include="Extensions\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Middleware\" />
     <Folder Include="RequestDto\" />
     <Folder Include="Services\" />
   </ItemGroup>

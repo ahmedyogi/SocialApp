@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { user, RegisterCreds, LoginCreds } from '../../types';
+import { user, RegisterCreds, LoginCreds } from '../../types/types';
 import { tap } from 'rxjs';
 import { JsonPipe } from '@angular/common';
 

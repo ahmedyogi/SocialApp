@@ -1,6 +1,6 @@
 import { Component, inject, input, Input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RegisterCreds, user } from '../../../types';
+import { RegisterCreds, user } from '../../../types/types';
 import { AccountService } from '../../../core/services/account-service';
 
 @Component({
