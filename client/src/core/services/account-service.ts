@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { user, RegisterCreds } from '../../types';
+import { user, RegisterCreds, LoginCreds } from '../../types';
 import { tap } from 'rxjs';
 import { JsonPipe } from '@angular/common';
 
@@ -13,7 +13,7 @@ export class AccountService {
 
   baseUrl = 'https://localhost:7141/api/';
 
-  login(creds: any){
+  login(creds: LoginCreds){
     return this.http.post<user>(this.baseUrl + 'Account/login',creds).pipe(
       tap(user =>{
         localStorage.setItem('user', JSON.stringify(user))

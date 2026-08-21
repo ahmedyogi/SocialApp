@@ -2,24 +2,9 @@
 
 
 
-<app-home />
+<div [ngClass]="{'mt-24 container mx-auto': !(router.url === '/')}">
+  <router-outlet />
+</div>
 
 
-<!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 mt-20">
-  @for (member of Members(); track member.id) {
-    <div
-      class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow duration-300 border border-base-200"
-    >
-      <div class="card-body items-center text-center p-5">
-        <img
-          class="w-20 h-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 object-cover"
-          src="images/user.png"
-          alt="avatar"
-        />
-        <h3 class="card-title text-base mt-2">
-          {{ member.username }}
-        </h3>
-      </div>
-    </div>
-  }
-</div> -->
+ 

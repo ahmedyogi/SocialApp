@@ -10,3 +10,7 @@ export type RegisterCreds = {
     email: string,
     password: string
 }
+export type LoginCreds = {
+    email: string,
+    password: string
+}
