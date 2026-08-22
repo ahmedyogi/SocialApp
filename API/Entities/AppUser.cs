@@ -11,6 +11,5 @@ public class AppUser
     public required byte[] PasswordHash {get; set;}
     public required byte[] PasswordSalt { get; set; }
     // navigation property
-    [ForeignKey(nameof(Id))]
     public Members Member { get; set; } = null!;
 }

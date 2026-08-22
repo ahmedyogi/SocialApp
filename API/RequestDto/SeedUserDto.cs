@@ -1,12 +1,11 @@
+using System;
 
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+namespace API.RequestDto;
 
-namespace API.Entities;
-
-public class Members
+public class SeedUserDto
 {
-    public string Id { get; set; } = null!;
+    public required string Id { get; set; } = null!;
+    public required string Email { get; set; }
     public DateOnly dateOfBirth { get; set; }
     public string? ImageUrl { get; set; }
     public required string Username { get; set; }
@@ -16,9 +15,4 @@ public class Members
     public string? Description { get; set; }
     public string? City { get; set; }
     public string? Country { get; set; }
-    // navigation property 
-    [JsonIgnore]
-    public List<Photo> Photos { get; set; } = [];
-    [ForeignKey(nameof(Id))]
-    public AppUser User { get; set; } = null!;
 }
